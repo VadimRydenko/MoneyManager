@@ -1,0 +1,32 @@
+import React from 'react';
+import { Button as PaperButton } from 'react-native-paper';
+import { theme } from '../../core/theme';
+import { styles } from './styles';
+import { RegisteredStyle, ViewStyle } from 'react-native';
+
+type ButtonProps = {
+  mode: 'text' | 'outlined' | 'contained' | 'elevated' | 'contained-tonal';
+  style: RegisteredStyle<ViewStyle>;
+  children: React.ReactNode;
+};
+
+export default function Button({
+  mode,
+  style,
+  children,
+  ...props
+}: ButtonProps) {
+  return (
+    <PaperButton
+      style={[
+        styles.button,
+        mode === 'outlined' && { backgroundColor: theme.colors.surface },
+        style,
+      ]}
+      labelStyle={styles.text}
+      mode={mode}
+      {...props}>
+      {children}
+    </PaperButton>
+  );
+}

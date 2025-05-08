@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
+  extends: ['eslint:recommended', 'plugin:import/recommended'],
   env: {
     browser: true,
     commonjs: true,
@@ -7,12 +7,22 @@ module.exports = {
     jest: true,
     node: true,
   },
+  settings: {
+    'import/ignore': ['react-native'],
+  },
   rules: {
     'jsx-a11y/href-no-hash': ['off'],
-    'react/jsx-filename-extension': ['warn', {extensions: ['.js', '.jsx']}],
+    'react/jsx-filename-extension': [0],
     // my customs
-    'no-unused-vars': 'warn',
-    'no-console': ['warn', {allow: ['error']}],
+
+    'import/no-unresolved': ['error', { commonjs: true, amd: true }],
+    'import/named': 'error',
+    'import/namespace': 'error',
+    'import/default': 'error',
+    'import/export': 'error',
+
+    'no-unused-vars': 'error',
+    'no-console': ['warn', { allow: ['error'] }],
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 0,
@@ -29,13 +39,14 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     camelcase: 'off',
-    'import/named': 'error',
     'jsx-a11y/accessible-emoji': 'off',
     'react/no-unescaped-entities': 'off',
     'no-await-in-loop': 'off',
     'global-require': 'off',
     'jsx-a11y/media-has-caption': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
+
+    'react-native/no-inline-styles': 0,
     //
     'max-len': [
       'warn',

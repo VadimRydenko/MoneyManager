@@ -14,7 +14,7 @@ export default function Dashboard({ navigation }) {
   return (
     <Background>
       <Header>Manage your money</Header>
-      {sortedUserData.length > 0 ? (
+      {sortedUserData?.length > 0 ? (
         <View style={styles.list}>
           <FlatList
             data={sortedUserData}

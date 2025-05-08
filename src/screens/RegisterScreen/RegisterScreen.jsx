@@ -36,13 +36,14 @@ export default function RegisterScreen({ navigation }) {
     }
     setLoading(true);
 
-    await signUpUser({
+    const response = await signUpUser({
       name: name.value,
       email: email.value,
       password: password.value,
     });
     if (response.error) {
       setError(response.error);
+      setLoading(false);
     }
     setLoading(false);
   };

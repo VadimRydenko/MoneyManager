@@ -54,17 +54,17 @@ yarn ios
 If everything is set up correctly, you should see your new app running in the iOS Simulator, or your connected device.
 
 ### Tech Stack
->React Native (CLI setup).
->Firebase Auth, firebase database
->State management React Context (to small aplication for Zustand or Redux)
->TypeScript (partially).
+* React Native (CLI setup).
+* Firebase Auth, firebase database
+* State management React Context (to small aplication for Zustand or Redux)
+* TypeScript (partially).
 
 
 ### Known issues
-> Working only for IOS
-> Dark theme not finished
-> linter has one error
-> husky not implemented
+* Working only for IOS
+* Dark theme not finished
+* linter has one error
+* husky not implemented
 
 
 

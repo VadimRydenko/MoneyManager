@@ -24,7 +24,8 @@ export default function Toast({
         style={{
           backgroundColor:
             type === 'error' ? theme.colors.error : theme.colors.success,
-        }}>
+        }}
+      >
         <Text style={styles.content}>{message}</Text>
       </Snackbar>
     </View>

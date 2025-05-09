@@ -11,7 +11,8 @@ export default function Background({ children }: BackgroundProps) {
     <ImageBackground
       source={require('../../assets/background_dot.png')}
       resizeMode="repeat"
-      style={styles.background}>
+      style={styles.background}
+    >
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         {children}
       </KeyboardAvoidingView>

@@ -1,11 +1,11 @@
 import './gesture-handler';
 import React from 'react';
-import {Provider} from 'react-native-paper';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { Provider } from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import 'firebase/auth';
-import {theme} from './src/core/theme';
+import { theme } from './src/core/theme';
 import {
   AuthLoadingScreen,
   StartScreen,
@@ -15,8 +15,8 @@ import {
   AddNewExpense,
 } from './src/screens';
 
-import {StateProvider} from './src/state';
-import {ScreenNames} from './src/constants';
+import { StateProvider } from './src/state';
+import { ScreenNames } from './src/constants';
 
 const Stack = createStackNavigator();
 
@@ -29,7 +29,8 @@ export default function App() {
             initialRouteName={ScreenNames.AuthLoadingScreen}
             screenOptions={{
               headerShown: false,
-            }}>
+            }}
+          >
             <Stack.Screen
               name={ScreenNames.AuthLoadingScreen}
               component={AuthLoadingScreen}

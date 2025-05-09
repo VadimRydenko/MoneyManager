@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React, { useContext, useCallback } from 'react';
+import {
+  View, Text, Image, TouchableOpacity,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import { removeExpense } from '../../api/expense-api';
 import { ScreenNames } from '../../constants';
-import { useNavigation } from '@react-navigation/native';
 import { StateContext } from '../../state';
 import { Expense as ExpenseType } from '../../core/types';
 import { getDate } from '../../core/utils';
@@ -15,13 +17,12 @@ interface ExpenseProps {
 export default function Expense({ item }: ExpenseProps) {
   const { userData, deleteExpense } = useContext(StateContext);
   const navigation = useNavigation();
-  const onDeletePress = async () => {
+  const onDeletePress = useCallback(async () => {
     await removeExpense(userData.userId, item.id);
     deleteExpense(item.id);
-  };
+  }, [deleteExpense, item.id, userData.userId]);
 
-  const onEditPress = () =>
-    navigation.navigate(ScreenNames.AddNewExpense, { item });
+  const onEditPress = () => navigation.navigate(ScreenNames.AddNewExpense, { item });
 
   return (
     <View style={styles.container}>

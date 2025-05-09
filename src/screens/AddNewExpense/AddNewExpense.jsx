@@ -55,7 +55,7 @@ export default function AddNewExpense({ navigation, route }) {
     });
     addCurrentExpense(newData);
     navigation.goBack();
-  }, [title, amount, category, date]);
+  }, [title, amount]);
 
   const onEditExpense = useCallback(async () => {
     const newData = await editExpense(userData.userId, item.id, {

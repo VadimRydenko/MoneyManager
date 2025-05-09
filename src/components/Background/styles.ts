@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../core/theme';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { theme } from '../../core/theme';
 
 export const styles = StyleSheet.create({
   background: {

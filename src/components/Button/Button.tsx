@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button as PaperButton } from 'react-native-paper';
+import { RegisteredStyle, ViewStyle } from 'react-native';
 import { theme } from '../../core/theme';
 import { styles } from './styles';
-import { RegisteredStyle, ViewStyle } from 'react-native';
 
 type ButtonProps = {
   mode: 'text' | 'outlined' | 'contained' | 'elevated' | 'contained-tonal';
@@ -25,7 +25,8 @@ export default function Button({
       ]}
       labelStyle={styles.text}
       mode={mode}
-      {...props}>
+      {...props}
+    >
       {children}
     </PaperButton>
   );

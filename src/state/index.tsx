@@ -1,4 +1,6 @@
-import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import React, {
+  createContext, Dispatch, SetStateAction, useCallback, useMemo, useState,
+} from 'react';
 import { Expense, UserData } from '../core/types';
 
 interface AppContextData {
@@ -16,47 +18,52 @@ interface StateProviderProps {
 
 export const StateContext = createContext<AppContextData | null>(null);
 
-export const StateProvider = ({ children }: StateProviderProps) => {
+export function StateProvider({ children }: StateProviderProps) {
   const [userData, setUserData] = useState<UserData>({ userId: '', data: [] });
 
-  const loadExpense = (userData: SetStateAction<UserData>) => {
-    setUserData(userData);
+  const loadExpense = (user: SetStateAction<UserData>) => {
+    setUserData(user);
   };
 
-  const addCurrentExpense = (data: Expense) => {
+  const addCurrentExpense = useCallback((data: Expense) => {
     setUserData({
       ...userData,
       data: [...userData?.data, data],
     });
-  };
+  }, [userData]);
 
-  const editCurrentExpense = (data: Expense) => {
-    const itemIndex = userData?.data.findIndex(item => item.id === data.id);
+  const editCurrentExpense = useCallback((data: Expense) => {
+    const itemIndex = userData?.data.findIndex((item) => item.id === data.id);
     setUserData({
       ...userData,
       ...(userData.data[itemIndex] = data),
     });
-  };
-  const deleteExpense = (id: string) => {
-    const newData = userData.data.filter(item => id !== item.id);
+  }, [userData]);
+
+  const deleteExpense = useCallback((id: string) => {
+    const newData = userData.data.filter((item) => id !== item.id);
 
     setUserData({
       ...userData,
       data: newData,
     });
-  };
+  }, [userData]);
+
+  const providerValues = useMemo(
+    () => ({
+      userData,
+      loadExpense,
+      setUserData,
+      addCurrentExpense,
+      editCurrentExpense,
+      deleteExpense,
+    }),
+    [addCurrentExpense, deleteExpense, editCurrentExpense, userData],
+  );
 
   return (
-    <StateContext.Provider
-      value={{
-        userData,
-        loadExpense,
-        setUserData,
-        addCurrentExpense,
-        editCurrentExpense,
-        deleteExpense,
-      }}>
+    <StateContext.Provider value={providerValues}>
       {children}
     </StateContext.Provider>
   );
-};
+}

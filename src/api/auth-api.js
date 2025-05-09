@@ -1,19 +1,19 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-// eslint-disable-next-line
+
 import { getUserData } from './expense-api';
 
 export const signUpUser = async ({ email, password }) => {
   try {
     const res = await auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(result => {
+      .then((result) => {
         firestore().collection('users').doc(result.user.uid).set({
-          email: email,
+          email,
         });
         return result.user.uid;
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.code === 'auth/email-already-in-use') {
           return { error: 'That email address is already in use!' };
         }
@@ -36,9 +36,7 @@ export const loginUser = async ({ email, password }) => {
   try {
     const data = await auth()
       .signInWithEmailAndPassword(email, password)
-      .then(async ({ user }) => {
-        return getUserData(user.uid);
-      });
+      .then(async ({ user }) => getUserData(user.uid));
     return { data };
   } catch (error) {
     return {

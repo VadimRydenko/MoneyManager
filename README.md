@@ -32,5 +32,3 @@ This is one way to run your app — you can also build it directly from Android 
 ### Known issues
 * Working only for IOS
 * Dark theme not finished
-* linter has errors
-* husky not implemented

@@ -6,6 +6,8 @@ interface ParagraphProps {
   children: React.ReactNode;
 }
 
-export default function Paragraph({ children }: ParagraphProps) {
+const Paragraph = ({ children }: ParagraphProps) => {
   return <Text style={styles.text}>{children}</Text>;
-}
+};
+
+export default Paragraph;

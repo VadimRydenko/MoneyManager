@@ -10,11 +10,7 @@ interface TextInputProps {
   type: string;
 }
 
-export default function Toast({
-  type = 'error',
-  message,
-  onDismiss,
-}: TextInputProps) {
+const Toast = ({ type = 'error', message, onDismiss }: TextInputProps) => {
   return (
     <View style={styles.container}>
       <Snackbar
@@ -24,10 +20,11 @@ export default function Toast({
         style={{
           backgroundColor:
             type === 'error' ? theme.colors.error : theme.colors.success,
-        }}
-      >
+        }}>
         <Text style={styles.content}>{message}</Text>
       </Snackbar>
     </View>
   );
-}
+};
+
+export default Toast;

@@ -6,13 +6,15 @@ type BackButtonProps = {
   goBack: () => void;
 };
 
-export default function BackButton({ goBack }: BackButtonProps) {
+const BackButton = ({ goBack }: BackButtonProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const image = require('../../assets/arrow_back.png');
+
   return (
     <TouchableOpacity onPress={goBack} style={styles.container}>
-      <Image
-        style={styles.image}
-        source={require('../../assets/arrow_back.png')}
-      />
+      <Image style={styles.image} source={image} />
     </TouchableOpacity>
   );
-}
+};
+
+export default BackButton;

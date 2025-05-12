@@ -13,11 +13,7 @@ interface TextInputProps {
   props: PaperTextInputProps;
 }
 
-export default function TextInput({
-  errorText,
-  description,
-  ...props
-}: TextInputProps) {
+const TextInput = ({ errorText, description, ...props }: TextInputProps) => {
   return (
     <View style={styles.container}>
       <Input
@@ -33,4 +29,6 @@ export default function TextInput({
       {errorText ? <Text style={styles.error}>{errorText}</Text> : null}
     </View>
   );
-}
+};
+
+export default TextInput;

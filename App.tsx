@@ -20,7 +20,7 @@ import { ScreenNames } from './src/constants';
 
 const Stack = createStackNavigator();
 
-export default function App() {
+const App = () => {
   return (
     <Provider theme={theme}>
       <StateProvider>
@@ -29,8 +29,7 @@ export default function App() {
             initialRouteName={ScreenNames.AuthLoadingScreen}
             screenOptions={{
               headerShown: false,
-            }}
-          >
+            }}>
             <Stack.Screen
               name={ScreenNames.AuthLoadingScreen}
               component={AuthLoadingScreen}
@@ -57,4 +56,6 @@ export default function App() {
       </StateProvider>
     </Provider>
   );
-}
+};
+
+export default App;

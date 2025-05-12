@@ -1,5 +1,10 @@
 import React, {
-  createContext, Dispatch, SetStateAction, useCallback, useMemo, useState,
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useMemo,
+  useState,
 } from 'react';
 import { Expense, UserData } from '../core/types';
 
@@ -18,36 +23,45 @@ interface StateProviderProps {
 
 export const StateContext = createContext<AppContextData | null>(null);
 
-export function StateProvider({ children }: StateProviderProps) {
+export const StateProvider = ({ children }: StateProviderProps) => {
   const [userData, setUserData] = useState<UserData>({ userId: '', data: [] });
 
   const loadExpense = (user: SetStateAction<UserData>) => {
     setUserData(user);
   };
 
-  const addCurrentExpense = useCallback((data: Expense) => {
-    setUserData({
-      ...userData,
-      data: [...userData?.data, data],
-    });
-  }, [userData]);
+  const addCurrentExpense = useCallback(
+    (data: Expense) => {
+      setUserData({
+        ...userData,
+        data: [...(userData?.data || {}), data],
+      });
+    },
+    [userData],
+  );
 
-  const editCurrentExpense = useCallback((data: Expense) => {
-    const itemIndex = userData?.data.findIndex((item) => item.id === data.id);
-    setUserData({
-      ...userData,
-      ...(userData.data[itemIndex] = data),
-    });
-  }, [userData]);
+  const editCurrentExpense = useCallback(
+    (data: Expense) => {
+      const itemIndex = userData?.data.findIndex(item => item.id === data.id);
+      setUserData({
+        ...userData,
+        ...(userData.data[itemIndex] = data),
+      });
+    },
+    [userData],
+  );
 
-  const deleteExpense = useCallback((id: string) => {
-    const newData = userData.data.filter((item) => id !== item.id);
+  const deleteExpense = useCallback(
+    (id: string) => {
+      const newData = userData.data.filter(item => id !== item.id);
 
-    setUserData({
-      ...userData,
-      data: newData,
-    });
-  }, [userData]);
+      setUserData({
+        ...userData,
+        data: newData,
+      });
+    },
+    [userData],
+  );
 
   const providerValues = useMemo(
     () => ({
@@ -66,4 +80,4 @@ export function StateProvider({ children }: StateProviderProps) {
       {children}
     </StateContext.Provider>
   );
-}
+};

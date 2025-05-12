@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 
 /**

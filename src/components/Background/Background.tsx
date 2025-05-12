@@ -6,16 +6,20 @@ type BackgroundProps = {
   children: React.ReactNode;
 };
 
-export default function Background({ children }: BackgroundProps) {
+const Background = ({ children }: BackgroundProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const image = require('../../assets/background_dot.png');
+
   return (
     <ImageBackground
-      source={require('../../assets/background_dot.png')}
+      source={image}
       resizeMode="repeat"
-      style={styles.background}
-    >
+      style={styles.background}>
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         {children}
       </KeyboardAvoidingView>
     </ImageBackground>
   );
-}
+};
+
+export default Background;

@@ -6,6 +6,8 @@ interface HeaderProps {
   children: React.ReactNode;
 }
 
-export default function Header({ children }: HeaderProps) {
+const Header = ({ children }: HeaderProps) => {
   return <Text style={styles.header}>{children}</Text>;
-}
+};
+
+export default Header;

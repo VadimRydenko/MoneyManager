@@ -10,12 +10,7 @@ type ButtonProps = {
   children: React.ReactNode;
 };
 
-export default function Button({
-  mode,
-  style,
-  children,
-  ...props
-}: ButtonProps) {
+const Button = ({ mode, style, children, ...props }: ButtonProps) => {
   return (
     <PaperButton
       style={[
@@ -25,9 +20,10 @@ export default function Button({
       ]}
       labelStyle={styles.text}
       mode={mode}
-      {...props}
-    >
+      {...props}>
       {children}
     </PaperButton>
   );
-}
+};
+
+export default Button;

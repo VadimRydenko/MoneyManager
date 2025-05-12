@@ -1,7 +1,6 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import React, { useContext, useCallback } from 'react';
-import {
-  View, Text, Image, TouchableOpacity,
-} from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
 import { removeExpense } from '../../api/expense-api';
@@ -14,7 +13,7 @@ interface ExpenseProps {
   item: ExpenseType;
 }
 
-export default function Expense({ item }: ExpenseProps) {
+const Expense = ({ item }: ExpenseProps) => {
   const { userData, deleteExpense } = useContext(StateContext);
   const navigation = useNavigation();
   const onDeletePress = useCallback(async () => {
@@ -22,7 +21,8 @@ export default function Expense({ item }: ExpenseProps) {
     deleteExpense(item.id);
   }, [deleteExpense, item.id, userData.userId]);
 
-  const onEditPress = () => navigation.navigate(ScreenNames.AddNewExpense, { item });
+  const onEditPress = () =>
+    navigation.navigate(ScreenNames.AddNewExpense, { item });
 
   return (
     <View style={styles.container}>
@@ -46,4 +46,6 @@ export default function Expense({ item }: ExpenseProps) {
       </View>
     </View>
   );
-}
+};
+
+export default Expense;

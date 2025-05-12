@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "lint": "ESLINT_USE_FLAT_CONFIG=true npx eslint . --report-unused-disable-directives --max-warnings 0 && stylelint '**/*.css' --max-warnings 0",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky"
   },
   "dependencies": {
     "@firebase/app": "^0.11.5",
@@ -50,7 +51,9 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.8",
     "globals": "^16.1.0",
+    "husky": "^9.1.7",
     "jest": "^29.6.3",
+    "lint-staged": "^16.0.0",
     "prettier": "^3.3.2",
     "react-test-renderer": "19.0.0",
     "typescript": "5.0.4",
@@ -61,5 +64,8 @@
   },
   "overrides": {
     "eslint": "^9.26.0"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": "npm run lint"
   }
 }

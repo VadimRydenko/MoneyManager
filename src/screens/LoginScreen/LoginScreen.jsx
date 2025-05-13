@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { TouchableOpacity, StyleSheet, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import {
   BackButton,
@@ -17,7 +17,7 @@ import { StateContext } from '../../state';
 import { ScreenNames } from '../../constants';
 import { styles } from './styles';
 
-export default function LoginScreen({ navigation }) {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const [loading, setLoading] = useState();
@@ -86,4 +86,6 @@ export default function LoginScreen({ navigation }) {
       <Toast message={error} onDismiss={() => setError('')} />
     </Background>
   );
-}
+};
+
+export default LoginScreen;

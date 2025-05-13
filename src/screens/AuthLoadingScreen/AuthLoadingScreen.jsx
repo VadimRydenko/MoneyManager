@@ -7,7 +7,7 @@ import { ScreenNames } from '../../constants';
 import { StateContext } from '../../state';
 import { getUserData } from '../../api/expense-api';
 
-export default function AuthLoadingScreen({ navigation }) {
+const AuthLoadingScreen = ({ navigation }) => {
   const { setUserData } = useContext(StateContext);
 
   useEffect(() => {
@@ -29,4 +29,6 @@ export default function AuthLoadingScreen({ navigation }) {
       <ActivityIndicator size="large" color={theme.colors.primary} />
     </Background>
   );
-}
+};
+
+export default AuthLoadingScreen;

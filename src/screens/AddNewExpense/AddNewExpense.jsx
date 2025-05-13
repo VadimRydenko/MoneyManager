@@ -15,7 +15,7 @@ import { StateContext } from '../../state';
 import { getDate } from '../../core/utils';
 import moment from 'moment';
 
-export default function AddNewExpense({ navigation, route }) {
+const AddNewExpense = ({ navigation, route }) => {
   const { item } = route?.params || {};
 
   const OPTIONS = [
@@ -93,7 +93,7 @@ export default function AddNewExpense({ navigation, route }) {
         error={!!amountError}
         errorText={amountError}
         autoCapitalize="none"
-        keyboardType={'numeric'}
+        keyboardType="numeric"
       />
       <View style={{ width: '100%' }}>
         <SelectDropdown
@@ -151,4 +151,6 @@ export default function AddNewExpense({ navigation, route }) {
       </View>
     </Background>
   );
-}
+};
+
+export default AddNewExpense;

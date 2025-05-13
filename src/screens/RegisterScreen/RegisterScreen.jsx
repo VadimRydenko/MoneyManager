@@ -17,7 +17,7 @@ import { signUpUser } from '../../api/auth-api';
 import { styles } from './styles';
 import { ScreenNames } from '../../constants';
 
-export default function RegisterScreen({ navigation }) {
+const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState({ value: '', error: '' });
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
@@ -99,4 +99,6 @@ export default function RegisterScreen({ navigation }) {
       <Toast message={error} onDismiss={() => setError('')} />
     </Background>
   );
-}
+};
+
+export default RegisterScreen;

@@ -6,7 +6,7 @@ import { styles } from './styles';
 import { ScreenNames } from '../../constants';
 import { StateContext } from '../../state';
 
-export default function Dashboard({ navigation }) {
+const Dashboard = ({ navigation }) => {
   const { userData } = useContext(StateContext);
   const onAddNewPress = () => navigation.navigate(ScreenNames.AddNewExpense);
   const sortedUserData = userData?.data?.sort((a, b) => a.date - b.date);
@@ -33,4 +33,6 @@ export default function Dashboard({ navigation }) {
       </View>
     </Background>
   );
-}
+};
+
+export default Dashboard;

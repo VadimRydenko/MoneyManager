@@ -2,7 +2,7 @@ import React from 'react';
 import { Background, Logo, Header, Button, Paragraph } from '../../components';
 import { ScreenNames } from '../../constants';
 
-export default function StartScreen({ navigation }) {
+const StartScreen = ({ navigation }) => {
   const onLoginPress = () => navigation.navigate(ScreenNames.LoginScreen);
 
   const onRegisterPress = () => navigation.navigate(ScreenNames.RegisterScreen);
@@ -20,4 +20,6 @@ export default function StartScreen({ navigation }) {
       </Button>
     </Background>
   );
-}
+};
+
+export default StartScreen;

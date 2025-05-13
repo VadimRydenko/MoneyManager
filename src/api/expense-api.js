@@ -16,14 +16,14 @@ export const addNewExpense = async (userId, doc) => {
   }
 };
 
-export const getUserData = async (userId) => {
+export const getUserData = async userId => {
   try {
     const userData = await firestore()
       .collection('users')
       .doc(userId)
       .collection('expenses')
       .get()
-      .then((doc) => doc?.docs.map((doc) => doc?.data()));
+      .then(doc => doc?.docs.map(doc => doc?.data()));
     return { userId, data: userData };
   } catch (error) {
     return {

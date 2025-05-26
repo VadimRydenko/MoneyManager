@@ -1,6 +1,6 @@
 import './gesture-handler';
 import React from 'react';
-import { Provider } from 'react-native-paper';
+import { Provider, MD3DarkTheme } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -17,12 +17,15 @@ import {
 
 import { StateProvider } from './src/state';
 import { ScreenNames } from './src/constants';
+import { useColorScheme } from 'react-native';
 
 const Stack = createStackNavigator();
 
 const App = () => {
+  const isDarkMode = useColorScheme() === 'dark';
+
   return (
-    <Provider theme={theme}>
+    <Provider theme={isDarkMode ? MD3DarkTheme : theme}>
       <StateProvider>
         <NavigationContainer>
           <Stack.Navigator
